@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Minha Aplicação Web</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			padding: 20px;
+		}
+		input[type=text] {
+			padding: 5px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: none;
+			margin-right: 10px;
+            background-color: #f0f0f0;
+		}
+		button {
+			padding: 5px 10px;
+			font-size: 16px;
+			border-radius: 5px;
+			border: none;
+			background-color: #4CAF50;
+			color: #fff;
+			cursor: pointer;
+		}
+		#objetos {
+			margin-top: 10px;
+			padding: 10px;
+			background-color: #f0f0f0;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Minha Aplicação Web</h1>
+	<input type="text" id="valor">
+	<button id="btn-adicionar">Adicionar</button>
+	<button id="btn-ordenar">Ordenar</button>
+	<div id="objetos"></div>
+	<script>
+		// Array de objetos
+		var objetos = ['Cadeira', 'Impressora', 'Garfo'];
+
+		// Elementos da página
+		var valorInput = document.getElementById('valor');
+		var btnAdicionar = document.getElementById('btn-adicionar');
+		var btnOrdenar = document.getElementById('btn-ordenar');
+		var divObjetos = document.getElementById('objetos');
+
+		// Função para adicionar um objeto ao Array
+		function adicionarObjeto() {
+			// Recupera o valor do campo de texto
+			var valor = valorInput.value;
+
+			// Verifica se o valor está vazio
+			if (valor === '') {
+				alert('Informe um valor válido');
+				return;
+			}
+
+			// Verifica se o valor já existe no Array
+			if (objetos.indexOf(valor) !== -1) {
+				alert('Objeto já foi adicionado');
+				return;
+			}
+
+			// Adiciona o valor ao Array e limpa o campo de texto
+			objetos.push(valor);
+			valorInput.value = '';
+
+			// Exibe o Array no console para debug
+			console.log(objetos);
+
+			// Exibe o Array na página
+			divObjetos.innerHTML = objetos.join(', ');
+		}
+
+		// Função para ordenar os objetos do Array
+		function ordenarObjetos() {
+			// Ordena o Array de objetos em ordem alfabética
+			objetos.sort();
+
+			// Exibe o Array no console para debug
+			console.log(objetos);
+
+			// Exibe o Array na página
+			divObjetos.innerHTML = objetos.join(', ');
+		}
+
+		// Adiciona evento de clique no botão "Adicionar"
+		btnAdicionar.addEventListener('click', adicionarObjeto);
+
+		// Adiciona evento de clique no botão "Ordenar"
+		btnOrdenar.addEventListener('click', ordenarObjetos);
+	</script>
+</body>
+</html>
